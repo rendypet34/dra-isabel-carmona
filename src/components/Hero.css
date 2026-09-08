@@ -1,11 +1,12 @@
 .hero {
-  background: linear-gradient(135deg, #ffedf5 0%, #fff5f7 50%, #f5e6f0 100%);
+  background: linear-gradient(135deg, #faf3f5 0%, #fdf8fa 50%, #f5e8ec 100%);
   padding: 100px 20px;
   text-align: center;
   min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #ebd9df;
 }
 
 .hero-content {
@@ -15,22 +16,23 @@
 
 .hero-title {
   font-size: 48px;
-  color: #d946a6;
+  color: #8c3f54;
   margin-bottom: 20px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .hero-subtitle {
   font-size: 18px;
-  color: #666;
+  color: #594d50;
   margin-bottom: 40px;
   line-height: 1.6;
   font-weight: 400;
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #d946a6 0%, #b8447f 100%);
+  background: linear-gradient(135deg, #a3586d 0%, #7d3b4d 100%);
   color: white;
   border: none;
   padding: 16px 40px;
@@ -39,12 +41,13 @@
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(217, 70, 166, 0.3);
+  box-shadow: 0 4px 20px rgba(156, 79, 100, 0.28);
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(217, 70, 166, 0.4);
+  box-shadow: 0 6px 26px rgba(156, 79, 100, 0.38);
+  background: linear-gradient(135deg, #914b5f 0%, #6d2f40 100%);
 }
 
 .cta-button:active {
