@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.css';
 
-function Footer() {
+function Footer({ onOpenAdmin }) {
   const year = new Date().getFullYear();
 
   return (
@@ -20,6 +20,11 @@ function Footer() {
 
         <div className="footer-bottom">
           <p>&copy; {year} Dra. Isabel Que Carmona. Todos los derechos reservados.</p>
+          {onOpenAdmin && (
+            <button className="footer-admin-link" onClick={onOpenAdmin}>
+              🔐 Acceso Panel Administrativo
+            </button>
+          )}
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-function Header() {
+function Header({ onOpenAdmin, conteoNuevos = 0 }) {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -19,6 +19,16 @@ function Header() {
         <nav className="navbar">
           <button onClick={() => scrollToSection('servicios')}>Servicios</button>
           <button onClick={() => scrollToSection('contacto')}>Contacto</button>
+          {onOpenAdmin && (
+            <button 
+              className="btn-header-admin"
+              onClick={onOpenAdmin}
+              title="Abrir Panel de Prospectos"
+            >
+              📊 Panel Dra.
+              {conteoNuevos > 0 && <span className="header-badge-nuevos">{conteoNuevos}</span>}
+            </button>
+          )}
         </nav>
       </div>
     </header>
