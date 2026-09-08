@@ -5,45 +5,21 @@ function Servicios() {
   const servicios = [
     {
       id: 1,
-      titulo: 'Armonización & Hidratación de Labios',
-      descripcion: 'Perfilado, volumen sutil e hidratación profunda con ácido hialurónico para unos labios definidos, suaves y naturales.',
-      icon: '💋'
-    },
-    {
-      id: 2,
-      titulo: 'Revitalización de Ojeras',
-      descripcion: 'Atenuación de surcos, ojeras hundidas y signos de fatiga para devolver luminosidad y frescura a tu mirada.',
-      icon: '👁️'
-    },
-    {
-      id: 3,
-      titulo: 'Enzimas Lipolíticas',
-      descripcion: 'Tratamiento enzimático avanzado para reducción de grasa localizada y definición en papada, rostro y zonas corporales.',
-      icon: '🧪'
-    },
-    {
-      id: 4,
-      titulo: 'Bioestimuladores de Colágeno',
-      descripcion: 'Activación natural de colágeno para restaurar firmeza, elasticidad y combatir la flacidez con resultados progresivos.',
+      titulo: 'Medicina Estética Facial',
+      descripcion: 'Tratamientos especializados para realzar y rejuvenecer tu rostro con técnicas avanzadas y seguras.',
       icon: '✨'
     },
     {
-      id: 5,
-      titulo: 'Regeneración Cutánea Facial Avanzada',
-      descripcion: 'Protocolos de renovación celular profunda, texturizado, luminosidad y restauración de la salud dérmica.',
-      icon: '🌸'
+      id: 2,
+      titulo: 'Medicina Estética Corporal',
+      descripcion: 'Procedimientos innovadores para modelar y tonificar tu cuerpo, logrando los resultados que deseas.',
+      icon: '💎'
     },
     {
-      id: 6,
-      titulo: 'Revitalización Capilar Avanzada',
-      descripcion: 'Terapias médicas para fortalecer el folículo piloso, frenar la caída del cabello y estimular su crecimiento y densidad.',
-      icon: '🌿'
-    },
-    {
-      id: 7,
-      titulo: 'Limpiezas Faciales Personalizadas',
-      descripcion: 'Higiene facial profunda adaptada a las necesidades específicas de tu tipo de piel, con extracción, hidratación y nutrición.',
-      icon: '🫧'
+      id: 3,
+      titulo: 'Control de Peso & Antiaging',
+      descripcion: 'Programas personalizados de control de peso y medicina regenerativa para una salud óptima.',
+      icon: '🌟'
     }
   ];
 

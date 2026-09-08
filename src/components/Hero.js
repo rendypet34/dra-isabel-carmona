@@ -2,24 +2,15 @@ import React from 'react';
 import './Hero.css';
 
 function Hero() {
-  const scrollToContact = () => {
-    const el = document.getElementById('contacto');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1 className="hero-title">Dra. Isabel Carmona</h1>
+        <h2 className="hero-title">Belleza que Inspira Confianza</h2>
         <p className="hero-subtitle">
-          Especialista en Medicina Estética, Rejuvenecimiento Facial y Corporal.
-          Cuidado integral y natural para realzar tu mejor versión.
+          Medicina estética de excelencia con los tratamientos más innovadores 
+          para realzar tu belleza natural y potenciar tu bienestar.
         </p>
-        <button className="cta-button" onClick={scrollToContact}>
-          Agenda tu Consulta
-        </button>
+        <button className="cta-button">Agendar Consulta</button>
       </div>
     </section>
   );
