@@ -7,7 +7,16 @@ import {
 } from '../utils/prospectosStorage';
 import './AdminPanel.css';
 
+const ADMIN_USER = 'icarmona';
+const ADMIN_PASS = 'Carmona01';
+const SESSION_AUTH_KEY = 'dra_carmona_auth';
+
 function AdminPanel({ isOpen, onClose }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginUser, setLoginUser] = useState('');
+  const [loginPass, setLoginPass] = useState('');
+  const [loginError, setLoginError] = useState('');
+
   const [prospectos, setProspectos] = useState([]);
   const [filtroEstado, setFiltroEstado] = useState('todos');
   const [busqueda, setBusqueda] = useState('');
@@ -15,7 +24,15 @@ function AdminPanel({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen) {
-      cargarDatos();
+      const isLogged = sessionStorage.getItem(SESSION_AUTH_KEY) === 'true';
+      setIsAuthenticated(isLogged);
+      if (isLogged) {
+        cargarDatos();
+      }
+    } else {
+      setLoginError('');
+      setLoginUser('');
+      setLoginPass('');
     }
   }, [isOpen]);
 
@@ -24,6 +41,25 @@ function AdminPanel({ isOpen, onClose }) {
   };
 
   if (!isOpen) return null;
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    if (loginUser.trim() === ADMIN_USER && loginPass === ADMIN_PASS) {
+      sessionStorage.setItem(SESSION_AUTH_KEY, 'true');
+      setIsAuthenticated(true);
+      setLoginError('');
+      cargarDatos();
+    } else {
+      setLoginError('Usuario o contraseña incorrectos.');
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem(SESSION_AUTH_KEY);
+    setIsAuthenticated(false);
+    setLoginUser('');
+    setLoginPass('');
+  };
 
   const handleCambiarEstado = (id, nuevoEstado) => {
     actualizarProspecto(id, { estado: nuevoEstado });
@@ -71,22 +107,80 @@ function AdminPanel({ isOpen, onClose }) {
 
   return (
     <div className="admin-overlay" onClick={(e) => e.target.className === 'admin-overlay' && onClose()}>
-      <div className="admin-modal">
-        <header className="admin-header">
-          <div>
-            <span className="admin-badge">Panel Administrativo</span>
-            <h2>Control de Prospectos & Citas</h2>
-            <p className="admin-subtitle">Dra. Isabel Carmona · Medicina Estética</p>
+      {!isAuthenticated ? (
+        <div className="admin-login-card">
+          <button className="admin-login-close" onClick={onClose} title="Cerrar">✕</button>
+          <div className="admin-login-header">
+            <div className="admin-login-icon">
+              <i className="fa-solid fa-lock"></i>
+            </div>
+            <h3>Acceso Administrativo</h3>
+            <p>Ingresa tus credenciales para ver prospectos y citas</p>
           </div>
-          <div className="admin-actions-top">
-            <button className="btn-exportar" onClick={exportarCSV} title="Descargar en Excel/CSV">
-              📥 Exportar CSV
+
+          {loginError && (
+            <div className="admin-login-alert">
+              <i className="fa-solid fa-triangle-exclamation"></i>
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleLoginSubmit} className="admin-login-form">
+            <div className="admin-input-group">
+              <label>Usuario</label>
+              <div className="admin-input-wrapper">
+                <i className="fa-regular fa-user"></i>
+                <input
+                  type="text"
+                  placeholder="Usuario (ej. icarmona)"
+                  value={loginUser}
+                  onChange={(e) => setLoginUser(e.target.value)}
+                  required
+                  autoFocus
+                />
+              </div>
+            </div>
+
+            <div className="admin-input-group">
+              <label>Contraseña</label>
+              <div className="admin-input-wrapper">
+                <i className="fa-solid fa-key"></i>
+                <input
+                  type="password"
+                  placeholder="Contraseña"
+                  value={loginPass}
+                  onChange={(e) => setLoginPass(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="btn-admin-login-submit">
+              <span>Ingresar al Panel</span>
+              <i className="fa-solid fa-arrow-right"></i>
             </button>
-            <button className="admin-close-btn" onClick={onClose} title="Cerrar panel">
-              ✕
-            </button>
-          </div>
-        </header>
+          </form>
+        </div>
+      ) : (
+        <div className="admin-modal">
+          <header className="admin-header">
+            <div>
+              <span className="admin-badge">Panel Administrativo</span>
+              <h2>Control de Prospectos & Citas</h2>
+              <p className="admin-subtitle">Dra. Isabel Que Carmona · Medicina Estética</p>
+            </div>
+            <div className="admin-actions-top">
+              <button className="btn-exportar" onClick={exportarCSV} title="Descargar en Excel/CSV">
+                📥 Exportar CSV
+              </button>
+              <button className="btn-admin-logout" onClick={handleLogout} title="Cerrar sesión">
+                <i className="fa-solid fa-right-from-bracket"></i> Salir
+              </button>
+              <button className="admin-close-btn" onClick={onClose} title="Cerrar panel">
+                ✕
+              </button>
+            </div>
+          </header>
 
         <section className="admin-stats-grid">
           <div className="stat-card stat-total" onClick={() => setFiltroEstado('todos')}>
@@ -265,6 +359,7 @@ function AdminPanel({ isOpen, onClose }) {
           )}
         </div>
       </div>
+    )}
     </div>
   );
 }
