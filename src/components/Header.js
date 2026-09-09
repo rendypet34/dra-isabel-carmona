@@ -18,6 +18,7 @@ function Header({ onOpenAdmin, conteoNuevos = 0 }) {
         </div>
         <nav className="navbar">
           <button onClick={() => scrollToSection('servicios')}>Servicios</button>
+          <button onClick={() => scrollToSection('sobre-mi')}>Especialista</button>
           <button onClick={() => scrollToSection('contacto')}>Contacto</button>
           {onOpenAdmin && (
             <button 

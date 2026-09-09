@@ -48,9 +48,33 @@
   border-color: #a3586d;
 }
 
-.servicio-icon {
-  font-size: 46px;
-  margin-bottom: 18px;
+.servicio-icon-box {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fcedf1 0%, #f4dfe5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ebd0d7;
+  transition: all 0.3s ease;
+}
+
+.servicio-card:hover .servicio-icon-box {
+  background: linear-gradient(135deg, #8c3f54 0%, #6b2e3e 100%);
+  border-color: #8c3f54;
+  transform: scale(1.08);
+}
+
+.servicio-fa-icon {
+  font-size: 26px;
+  color: #8c3f54;
+  transition: color 0.3s ease;
+}
+
+.servicio-card:hover .servicio-fa-icon {
+  color: #ffffff;
 }
 
 .servicio-titulo {

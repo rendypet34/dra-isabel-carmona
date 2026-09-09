@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Servicios from './components/Servicios';
+import SobreMi from './components/SobreMi';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -30,6 +31,7 @@ function App() {
       <Header onOpenAdmin={() => setIsAdminOpen(true)} conteoNuevos={conteoNuevos} />
       <Hero />
       <Servicios />
+      <SobreMi />
       <Contacto />
       <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
       <WhatsAppButton />
